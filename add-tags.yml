@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Ensure tags are present on a resource
+      amazon.aws.ec2_tag:
+        region: us-west-2
+        resource: <instance_ID>
+        state: present
+        tags:
+          Name: Ansible instance
+          ## env: no
+          env: prod
