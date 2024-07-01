@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Check the hostname of hosts
+      command: hostnamectl
+      register: output
+
+    - name: Show output
+      debug: var=output
