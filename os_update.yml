@@ -1,0 +1,8 @@
+---
+
+- hosts: test
+  become: yes
+
+  tasks:
+    - name: Update the OS of a Linux instance.
+      command: yum update -y
