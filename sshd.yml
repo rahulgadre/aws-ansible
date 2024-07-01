@@ -8,5 +8,10 @@
       command: systemctl status sshd
       register: output
 
+    - name: Restarting sshd
+      service:
+        name: sshd
+        state: restarted 
+      
     - name: Show output
       debug: var=output
