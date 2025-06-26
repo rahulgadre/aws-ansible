@@ -1,0 +1,19 @@
+---
+
+- hosts: localhost
+  gather_facts: false
+  vars_files:
+    - iam_vars.yml
+    - vpc_vars.yml
+      
+  tasks:
+    - name: Create EC2 
+      amazon.aws.ec2_instance:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        instance_type: "{{ instance_type }}"
+        image_id: "{{ image_id }}"
+        region: "{{ region }}"
+        vpc_subnet_id: "{{ vpc_subnet_id }}"
+        tags:
+          Name: Created By Ansible
